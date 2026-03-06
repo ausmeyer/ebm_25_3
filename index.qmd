@@ -27,7 +27,7 @@ format:
   - Confounding and matching
 
 - **Part 2: Choosing the Right Statistical Test**
-  - Student t, unpaired t, chi-square, and Mann-Whitney U
+  - Student t (unpaired t), chi-square, and Mann-Whitney U
 
 - **Part 3: Clinical Impact vs Statistical Significance**
   - Number needed to treat (NNT)
@@ -98,7 +98,7 @@ Of the following, the BEST statement of a null hypothesis with regard to this st
 - The null hypothesis is the “no difference” statement.
 - In this vignette, H0 is that cure rates are the same between compound A and trimethoprim-sulfamethoxazole.
 - The alternative hypothesis would be that cure rates differ.
-- A p-value threshold of .05 means we reject H0 when p < .05 and fail to reject when p >= .05.
+- If prespecified alpha is .05, we reject H0 when p < .05 and otherwise fail to reject H0.
 :::
 
 ---
@@ -162,10 +162,11 @@ Of the following, the use of a term-born sibling to serve as a matched control i
 ## Debrief: Confounding vs Other Errors
 
 :::{.incremental}
-- **A (power):** power concerns sample size and type II error risk, not matching strategy.
+- **A (power):** power depends on sample size, effect size, and variability; matching can affect precision, but here its primary purpose is confounding control.
 - **C (type I error):** false-positive risk is controlled by alpha/p-value thresholds.
 - **D (type II error):** false-negative risk is reduced by adequate power/sample size.
 - Matching is a design-stage confounding-control strategy.
+- In matched studies, analysis should account for the matching to preserve the design benefit.
 :::
 
 ---
@@ -216,6 +217,7 @@ Of the following, the BEST statistical test to compare the FEV1 between the 2 gr
 - Outcome is continuous (FEV1).
 - Design is parallel-group, so groups are independent.
 - Student t test compares means between 2 independent groups when assumptions are met.
+- In this context, "Student t test" and "unpaired t test" are synonymous.
 :::
 
 ---
@@ -331,7 +333,7 @@ Of the following, the MOST appropriate statistical test to analyze the results i
 :::{.incremental}
 - Outcome is categorical (influenza infection: yes/no).
 - Comparison is across independent groups.
-- Chi-square is the standard nonparametric test for association in categorical data.
+- Chi-square is the standard statistical test for association in categorical data.
 - Fisher exact test is preferred when expected cell counts are very small.
 :::
 
@@ -442,7 +444,7 @@ Of the following, the CONCEPT expressed in this last conclusion is known as
 | Risk in treatment group | Injuries with strengthening warm-up | 5% |
 | Risk in control group | Injuries with static stretching | 15% |
 | Absolute risk reduction (ARR) | 0.15 - 0.05 | 0.10 |
-| Relative risk (RR) | 0.15 / 0.05 | 3 |
+| Relative risk (RR, treatment vs control) | 0.05 / 0.15 | 0.33 |
 | Number needed to treat (NNT) | 1 / 0.10 | 10 |
 
 ---
@@ -488,7 +490,7 @@ Of the following, the MOST accurate statement about the use of the oral anticoag
 :::{.incremental}
 - Trial shows similar efficacy between oral and injectable options.
 - Bleeding risk increase is statistically significant (p = .04) but very small in absolute terms (0.5% vs 0.3%).
-- That absolute difference is 0.2%, or about 2 additional events per 1,000 treated.
+- That absolute difference is 0.2%, or about 2 additional events per 1,000 treated (NNH approximately 500).
 - Evidence-based decisions at the bedside must integrate patient burden, quality of life, harms, and benefits.
 :::
 
@@ -550,7 +552,7 @@ Of the following, the MOST likely statistical error the researcher has committed
 - Type II error = false negative: failing to reject a false null hypothesis.
 - Here, an early small study concluded no difference, but a later large trial showed efficacy.
 - This pattern strongly suggests insufficient power/sample size in the original study.
-- p > .05 does not prove no effect if power is low.
+- Here, P = .28 indicates insufficient evidence at this sample size, not proof that no true difference exists.
 :::
 
 ---
@@ -607,7 +609,7 @@ Of the following, Dr. Bone’s conclusion that unobtainimab is no more effective
 **Correct Answer: D. a type II error**
 
 :::{.incremental}
-- Original small study accepted the null (“no effect”).
+- Original small study failed to reject the null hypothesis (“no effect”).
 - Larger follow-up study demonstrated benefit (P = 0.004), later replicated.
 - This is classic false-negative interpretation from an underpowered trial.
 - Type I error would be the opposite: claiming an effect when none exists.
@@ -645,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li>C and D improperly use p-value results to define hypotheses.</li>
         </ul>`,
     2: `<p><strong>Correct Answer: B. confounding</strong></p>
-        <p>Sibling matching controls shared environmental covariates and reduces confounding.</p>`,
+        <p>Sibling matching controls shared environmental covariates and reduces confounding; matched designs should be analyzed with methods that account for matching.</p>`,
     3: `<p><strong>Correct Answer: D. Student t test</strong></p>
         <p>Continuous outcome (FEV1), two independent groups, and parallel-group design support Student/unpaired t testing.</p>`,
     4: `<p><strong>Correct Answer: D. unpaired t test</strong></p>

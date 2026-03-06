@@ -1492,7 +1492,7 @@ A new study evaluates the effect of a novel antibiotic, compound A, in treating 
 <li class="fragment">The null hypothesis is the “no difference” statement.</li>
 <li class="fragment">In this vignette, H0 is that cure rates are the same between compound A and trimethoprim-sulfamethoxazole.</li>
 <li class="fragment">The alternative hypothesis would be that cure rates differ.</li>
-<li class="fragment">A p-value threshold of .05 means we reject H0 when p &lt; .05 and fail to reject when p &gt;= .05.</li>
+<li class="fragment">If prespecified alpha is .05, we reject H0 when p &lt; .05 and otherwise fail to reject H0.</li>
 </ul>
 </section>
 <section id="debrief-why-the-other-choices-are-incorrect" class="slide level2">
@@ -1529,7 +1529,7 @@ A researcher is interested in studying the effects of preterm birth on math and 
 <section id="debrief-confounding-vs-other-errors" class="slide level2">
 <h2>Debrief: Confounding vs Other Errors</h2>
 <ul>
-<li class="fragment"><strong>A (power):</strong> power concerns sample size and type II error risk, not matching strategy.</li>
+<li class="fragment"><strong>A (power):</strong> power depends on sample size, effect size, and variability; matching can affect precision, but here its primary purpose is confounding control.</li>
 <li class="fragment"><strong>C (type I error):</strong> false-positive risk is controlled by alpha/p-value thresholds.</li>
 <li class="fragment"><strong>D (type II error):</strong> false-negative risk is reduced by adequate power/sample size.</li>
 <li class="fragment">Matching is a design-stage confounding-control strategy.</li>
@@ -1755,9 +1755,9 @@ A physician is reviewing a journal article with a group of medical students. The
 <td>0.10</td>
 </tr>
 <tr class="even">
-<td>Relative risk (RR)</td>
-<td>0.15 / 0.05</td>
-<td>3</td>
+<td>Relative risk (RR, treatment vs control)</td>
+<td>0.05 / 0.15</td>
+<td>0.33</td>
 </tr>
 <tr class="odd">
 <td>Number needed to treat (NNT)</td>
@@ -1787,7 +1787,7 @@ A 6-year-old girl with a deep vein thrombosis is treated with twice-daily inject
 <ul>
 <li class="fragment">Trial shows similar efficacy between oral and injectable options.</li>
 <li class="fragment">Bleeding risk increase is statistically significant (p = .04) but very small in absolute terms (0.5% vs 0.3%).</li>
-<li class="fragment">That absolute difference is 0.2%, or about 2 additional events per 1,000 treated.</li>
+<li class="fragment">That absolute difference is 0.2%, or about 2 additional events per 1,000 treated (NNH approximately 500).</li>
 <li class="fragment">Evidence-based decisions at the bedside must integrate patient burden, quality of life, harms, and benefits.</li>
 </ul>
 </section>
@@ -1881,7 +1881,7 @@ Dr. Bone hypothesizes that a new biologic medication, unobtainimab, will be eff
 <h2>Debrief: Another Type II Error Pattern</h2>
 <p><strong>Correct Answer: D. a type II error</strong></p>
 <ul>
-<li class="fragment">Original small study accepted the null (“no effect”).</li>
+<li class="fragment">Original small study failed to reject the null hypothesis (“no effect”).</li>
 <li class="fragment">Larger follow-up study demonstrated benefit (P = 0.004), later replicated.</li>
 <li class="fragment">This is classic false-negative interpretation from an underpowered trial.</li>
 <li class="fragment">Type I error would be the opposite: claiming an effect when none exists.</li>
