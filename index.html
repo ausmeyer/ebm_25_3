@@ -1440,7 +1440,7 @@ Austin Meyer, MD, PhD, MS, MPH, MS
 </ul></li>
 <li class="fragment"><strong>Part 2: Choosing the Right Statistical Test</strong>
 <ul>
-<li class="fragment">Student t, unpaired t, chi-square, and Mann-Whitney U</li>
+<li class="fragment">Student t (unpaired t), chi-square, and Mann-Whitney U</li>
 </ul></li>
 <li class="fragment"><strong>Part 3: Clinical Impact vs Statistical Significance</strong>
 <ul>
@@ -1533,6 +1533,7 @@ A researcher is interested in studying the effects of preterm birth on math and 
 <li class="fragment"><strong>C (type I error):</strong> false-positive risk is controlled by alpha/p-value thresholds.</li>
 <li class="fragment"><strong>D (type II error):</strong> false-negative risk is reduced by adequate power/sample size.</li>
 <li class="fragment">Matching is a design-stage confounding-control strategy.</li>
+<li class="fragment">In matched studies, analysis should account for the matching to preserve the design benefit.</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1564,6 +1565,7 @@ A researcher is developing a double-blind, placebo-controlled, parallel-group ra
 <li class="fragment">Outcome is continuous (FEV1).</li>
 <li class="fragment">Design is parallel-group, so groups are independent.</li>
 <li class="fragment">Student t test compares means between 2 independent groups when assumptions are met.</li>
+<li class="fragment">In this context, “Student t test” and “unpaired t test” are synonymous.</li>
 </ul>
 </section>
 <section id="explanatory-figure-quick-test-selection-matrix" class="slide level2">
@@ -1668,7 +1670,7 @@ A nephrology fellow wants to assess the prevalence of influenza in vaccinated an
 <ul>
 <li class="fragment">Outcome is categorical (influenza infection: yes/no).</li>
 <li class="fragment">Comparison is across independent groups.</li>
-<li class="fragment">Chi-square is the standard nonparametric test for association in categorical data.</li>
+<li class="fragment">Chi-square is the standard statistical test for association in categorical data.</li>
 <li class="fragment">Fisher exact test is preferred when expected cell counts are very small.</li>
 </ul>
 </section>
@@ -1828,7 +1830,7 @@ A researcher is evaluating a new agent for the treatment of patent ductus arteri
 <li class="fragment">Type II error = false negative: failing to reject a false null hypothesis.</li>
 <li class="fragment">Here, an early small study concluded no difference, but a later large trial showed efficacy.</li>
 <li class="fragment">This pattern strongly suggests insufficient power/sample size in the original study.</li>
-<li class="fragment">p &gt; .05 does not prove no effect if power is low.</li>
+<li class="fragment">Here, P = .28 indicates insufficient evidence at this sample size, not proof that no true difference exists.</li>
 </ul>
 </section>
 <section id="explanatory-figure-type-i-vs-type-ii-errors" class="slide level2">
@@ -1913,7 +1915,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li>C and D improperly use p-value results to define hypotheses.</li>
         </ul>`,
     2: `<p><strong>Correct Answer: B. confounding</strong></p>
-        <p>Sibling matching controls shared environmental covariates and reduces confounding.</p>`,
+        <p>Sibling matching controls shared environmental covariates and reduces confounding; matched designs should be analyzed with methods that account for matching.</p>`,
     3: `<p><strong>Correct Answer: D. Student t test</strong></p>
         <p>Continuous outcome (FEV1), two independent groups, and parallel-group design support Student/unpaired t testing.</p>`,
     4: `<p><strong>Correct Answer: D. unpaired t test</strong></p>
