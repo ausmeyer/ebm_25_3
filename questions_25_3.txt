@@ -1,0 +1,22 @@
+Selected PREP Questions for EBM 25_3
+
+Part 1: Hypothesis & Study Validity
+- Question 31: Null hypothesis statement (Correct: B)
+- Question 40: Matching to minimize confounding (Correct: B)
+
+Part 2: Choosing the Right Statistical Test
+- Question 32: Student t test for 2 independent groups, continuous outcome (Correct: D)
+- Question 33: Unpaired t test (Correct: D)
+- Question 35: Chi-square test (Correct: A)
+- Question 42: Mann-Whitney U test (Correct: C)
+
+Part 3: Clinical Interpretation of Results
+- Question 30: Number needed to treat (Correct: B)
+- Question 38: Statistical vs clinical importance (Correct: A)
+
+Part 4: Power and Error
+- Question 41: Type II error (Correct: D)
+- Question 43: Type II error (Correct: D)
+
+Previously used questions excluded:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 17, 21, 26, 28, 29, 34, 37, 39

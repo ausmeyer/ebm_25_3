@@ -1,0 +1,504 @@
+/* Custom CSS for EBM Presentation */
+/* Purple theme based on previous presentations */
+
+:root {
+  --primary-color: #43418A;
+  --secondary-color: #8CB3D9;
+  --accent-color: #96C3CE;
+  --success-color: #A1D0A5;
+  --warning-color: #E74C3C;
+  --text-color: #272822;
+  --background-color: #FFFFFF;
+}
+
+/* General slide styles */
+.reveal {
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 26px;
+  color: var(--text-color);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: 'Cabin', Georgia, serif;
+  color: var(--primary-color);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.reveal h1 {
+  font-size: 2.2em;
+  text-align: center;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.2em;
+}
+
+.reveal h3 {
+  font-size: 1.4em;
+  margin-bottom: 0.4em;
+}
+
+/* Section slides with gradient background */
+.reveal .slides section[background-color="#43418A"] h1 {
+  color: white !important;
+  text-align: center !important;
+  font-size: 2.5em !important;
+  border: none !important;
+  margin-top: 30vh !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.reveal .slides section[background-color="#43418A"] h2 {
+  color: white !important;
+  text-align: center !important;
+  font-size: 1.5em !important;
+  border: none !important;
+  margin-top: 0.5em !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Title slide */
+.title-slide {
+  text-align: center !important;
+}
+
+.title-slide h1 {
+  color: var(--primary-color);
+  font-size: 2.5em;
+  margin-bottom: 0.3em;
+}
+
+.title-slide h2 {
+  color: var(--secondary-color);
+  font-size: 1.5em;
+  border: none;
+  margin-bottom: 0.5em;
+}
+
+.title-slide h3 {
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+/* Lists */
+.reveal ul,
+.reveal ol {
+  display: block;
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+.reveal a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--primary-color);
+}
+
+.reveal a:hover {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+/* Code blocks */
+.reveal pre {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1em;
+  font-size: 0.85em;
+}
+
+.reveal code {
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  background: #f0f0f0;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* Quiz container styles */
+#quiz-container-1, #quiz-container-2, #quiz-container-3, 
+#quiz-container-4, #quiz-container-5, #quiz-container-6, 
+#quiz-container-7, #quiz-container-8, #quiz-container-9, 
+#quiz-container-10 {
+  background: #f9f9f9;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.question {
+  font-size: 0.95em;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+/* Quiz form styles */
+#quiz-container-1 form, #quiz-container-2 form, #quiz-container-3 form,
+#quiz-container-4 form, #quiz-container-5 form, #quiz-container-6 form,
+#quiz-container-7 form, #quiz-container-8 form, #quiz-container-9 form,
+#quiz-container-10 form {
+  margin: 15px 0;
+}
+
+#quiz-container-1 label, #quiz-container-2 label, #quiz-container-3 label,
+#quiz-container-4 label, #quiz-container-5 label, #quiz-container-6 label,
+#quiz-container-7 label, #quiz-container-8 label, #quiz-container-9 label,
+#quiz-container-10 label {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+#quiz-container-1 label:hover, #quiz-container-2 label:hover, #quiz-container-3 label:hover,
+#quiz-container-4 label:hover, #quiz-container-5 label:hover, #quiz-container-6 label:hover,
+#quiz-container-7 label:hover, #quiz-container-8 label:hover, #quiz-container-9 label:hover,
+#quiz-container-10 label:hover {
+  background-color: #e8f4f8;
+}
+
+#quiz-container-1 label input, #quiz-container-2 label input, #quiz-container-3 label input,
+#quiz-container-4 label input, #quiz-container-5 label input, #quiz-container-6 label input,
+#quiz-container-7 label input, #quiz-container-8 label input, #quiz-container-9 label input,
+#quiz-container-10 label input {
+  margin-right: 12px;
+  margin-top: 1.1em;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.answer-text {
+  display: inline-block;
+  line-height: 1.4;
+  padding-top: 0.1em;
+  flex: 1;
+}
+
+.answer-letter {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Specific styling for Question 9 with long answers */
+#quiz-container-9 {
+  font-size: 0.85em;
+}
+
+#quiz-container-9 .question {
+  font-size: 0.9em;
+}
+
+#quiz-container-9 label {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 0.88em;
+  margin-bottom: 8px;
+}
+
+#quiz-container-9 label input {
+  margin-top: 0.3em;
+  flex-shrink: 0;
+}
+
+#quiz-container-9 .answer-text {
+  display: inline-block;
+  padding-left: 0.5em;
+  flex: 1;
+}
+
+#quiz-container-9 .data-display {
+  font-size: 0.9em;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+/* Quiz button styles */
+#quiz-container-1 button, #quiz-container-2 button, #quiz-container-3 button,
+#quiz-container-4 button, #quiz-container-5 button, #quiz-container-6 button,
+#quiz-container-7 button, #quiz-container-8 button, #quiz-container-9 button,
+#quiz-container-10 button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+#quiz-container-1 button:hover, #quiz-container-2 button:hover, #quiz-container-3 button:hover,
+#quiz-container-4 button:hover, #quiz-container-5 button:hover, #quiz-container-6 button:hover,
+#quiz-container-7 button:hover, #quiz-container-8 button:hover, #quiz-container-9 button:hover,
+#quiz-container-10 button:hover {
+  background: var(--secondary-color);
+}
+
+/* Result and explanation divs */
+#result-1, #result-2, #result-3, #result-4, #result-5,
+#result-6, #result-7, #result-8, #result-9, #result-10 {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#explanation-1, #explanation-2, #explanation-3, #explanation-4, #explanation-5,
+#explanation-6, #explanation-7, #explanation-8, #explanation-9, #explanation-10 {
+  margin-top: 15px;
+  padding: 15px;
+  background: #e8f4f8;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+/* Modal styles for explanations */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 30px;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  width: 95%;
+  max-width: 1000px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 28px;
+  line-height: 1.6;
+}
+
+.modal-content strong {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.modal-content ul, .modal-content ol {
+  margin: 15px 0 15px 30px;
+}
+
+.modal-content li {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin: 15px 0;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Data display styling */
+.data-display {
+  text-align: center;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #e8f4f8;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Table styles */
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.reveal table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  padding: 0.5em 1em;
+}
+
+.reveal table td {
+  padding: 0.5em 1em;
+  border: 1px solid #ddd;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Image styles */
+.reveal img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Center plot outputs */
+.reveal .cell-output-display {
+  text-align: center;
+}
+
+.reveal .cell-output-display p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Slide number */
+.reveal .slide-number {
+  color: var(--primary-color);
+  font-size: 0.8em;
+}
+
+/* Progress bar */
+.reveal .progress {
+  color: var(--primary-color);
+  height: 4px;
+}
+
+.reveal .progress span {
+  background: var(--primary-color);
+}
+
+/* Incremental reveal */
+.reveal .slides section .fragment {
+  opacity: 0.3;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+/* Column layout */
+.columns {
+  display: flex;
+  gap: 2em;
+}
+
+.column {
+  flex: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .reveal {
+    font-size: 24px;
+  }
+  
+  .columns {
+    flex-direction: column;
+  }
+  
+  .reveal h1 {
+    font-size: 1.8em;
+  }
+  
+  .reveal h2 {
+    font-size: 1.5em;
+  }
+}
+
+/* Print styles */
+@media print {
+  .reveal .slide-number {
+    display: none;
+  }
+  
+  .reveal .progress {
+    display: none;
+  }
+}
+/* Long stem tuning for this deck */
+#quiz-container-4,
+#quiz-container-8,
+#quiz-container-10 {
+  font-size: 0.82em;
+}
+
+#quiz-container-10 .question,
+#quiz-container-8 .question,
+#quiz-container-4 .question {
+  font-size: 0.88em;
+  line-height: 1.32;
+}
+
+#quiz-container-10 label,
+#quiz-container-8 label,
+#quiz-container-4 label {
+  font-size: 0.9em;
+}
+
+/* Extra compression for Question 10 very long stem */
+#quiz-container-10 {
+  font-size: 0.72em;
+}
+
+#quiz-container-10 .question {
+  font-size: 0.8em;
+  line-height: 1.24;
+  margin-bottom: 10px;
+}
+
+#quiz-container-10 label {
+  font-size: 0.86em;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#quiz-container-10 button {
+  margin-top: 8px;
+  padding: 7px 14px;
+}

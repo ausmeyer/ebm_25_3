@@ -1,0 +1,728 @@
+---
+title: "Biostatistics & Epidemiology — Part 3"
+subtitle: "Hypothesis Testing, Test Selection & Clinical Relevance"
+author: "Austin Meyer, MD, PhD, MS, MPH, MS"
+date: today
+format:
+  revealjs:
+    theme: default
+    css: custom.css
+    slide-number: true
+    transition: slide
+    width: 1366
+    height: 720
+    fontsize: 26px
+    title-slide-attributes:
+      data-state: title-slide
+    self-contained: true
+---
+
+## Lecture Overview
+
+### What We'll Cover Today
+
+:::{.incremental}
+- **Part 1: Framing Inference Correctly**
+  - Null hypothesis language and interpretation
+  - Confounding and matching
+
+- **Part 2: Choosing the Right Statistical Test**
+  - Student t, unpaired t, chi-square, and Mann-Whitney U
+
+- **Part 3: Clinical Impact vs Statistical Significance**
+  - Number needed to treat (NNT)
+  - Statistical significance vs clinical relevance at the bedside
+
+- **Part 4: Type II Error and Study Power**
+  - Why “no significant difference” can be misleading in underpowered studies
+:::
+
+---
+
+## How We'll Work Through Questions
+
+:::{.incremental}
+- Present a clinical vignette and answer options
+- 20–30 seconds of think time (pair‑share)
+- Reveal the answer and debrief with 2–3 teaching points
+- Where helpful, we'll add a simple visual to anchor the concept
+:::
+
+<br><br>
+
+---
+
+# Part 1: Framing Inference Correctly {background-color="#43418A"}
+
+---
+
+## Question 1 (Original Question #31)
+
+:::: {#quiz-container-1}
+<p class="question">
+A new study evaluates the effect of a novel antibiotic, compound A, in treating urinary tract infections in children. Children and adolescents with a confirmed urinary tract infection are randomized to receive either compound A or trimethoprim-sulfamethoxazole. The outcome of interest is microbiologic cure at day 3 of therapy.
+<br><br>
+Of the following, the BEST statement of a null hypothesis with regard to this study is that at 3 days, compound A
+</p>
+
+<form id="quiz-form-1">
+  <label>
+    <input type="radio" name="answer-1" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> has a lower rate of microbiologic cure proportion than trimethoprim-sulfamethoxazole</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-1" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> has the same rate of microbiologic cure proportion as trimethoprim-sulfamethoxazole</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-1" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> is equivalent to trimethoprim-sulfamethoxazole if the associated p-value is greater than 0.05</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-1" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> is noninferior to trimethoprim-sulfamethoxazole for urinary tract infection in children if the associated p-value is greater than 0.05</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-1"></div>
+::::
+
+---
+
+## Debrief: Null Hypothesis Language
+
+**Correct Answer: B. has the same rate of microbiologic cure proportion as trimethoprim-sulfamethoxazole**
+
+:::{.incremental}
+- The null hypothesis is the “no difference” statement.
+- In this vignette, H0 is that cure rates are the same between compound A and trimethoprim-sulfamethoxazole.
+- The alternative hypothesis would be that cure rates differ.
+- A p-value threshold of .05 means we reject H0 when p < .05 and fail to reject when p >= .05.
+:::
+
+---
+
+## Debrief: Why The Other Choices Are Incorrect
+
+:::{.incremental}
+- **A** describes an alternative hypothesis (difference), not the null.
+- **C** and **D** mix hypothesis wording with post-hoc p-value interpretation.
+- “Equivalent” and “noninferior” require specific trial design assumptions and prespecified margins, not just p > .05.
+:::
+
+---
+
+## Question 2 (Original Question #40)
+
+:::: {#quiz-container-2}
+<p class="question">
+A researcher is interested in studying the effects of preterm birth on math and reading achievement. She plans to recruit children ages 6 to 12 years with a history of preterm birth who have a term-born sibling within the same age range to serve as a matched control.
+<br><br>
+Of the following, the use of a term-born sibling to serve as a matched control is BEST described as a means of minimizing
+</p>
+
+<form id="quiz-form-2">
+  <label>
+    <input type="radio" name="answer-2" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> power</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-2" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> confounding</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-2" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> type I error</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-2" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> type II error</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-2"></div>
+::::
+
+---
+
+## Debrief: Matching Minimizes Confounding
+
+**Correct Answer: B. confounding**
+
+:::{.incremental}
+- Confounding occurs when a third variable is associated with both predictor and outcome.
+- Matching preterm children to term-born siblings helps reduce shared environmental confounders (eg, socioeconomic context, parental education).
+- This improves validity by reducing spurious causal interpretations.
+:::
+
+---
+
+## Debrief: Confounding vs Other Errors
+
+:::{.incremental}
+- **A (power):** power concerns sample size and type II error risk, not matching strategy.
+- **C (type I error):** false-positive risk is controlled by alpha/p-value thresholds.
+- **D (type II error):** false-negative risk is reduced by adequate power/sample size.
+- Matching is a design-stage confounding-control strategy.
+:::
+
+---
+
+# Part 2: Choosing The Right Statistical Test {background-color="#43418A"}
+
+---
+
+## Question 3 (Original Question #32)
+
+:::: {#quiz-container-3}
+<p class="question">
+A researcher is developing a double-blind, placebo-controlled, parallel-group randomized controlled trial assessing the effect of a new leukotriene receptor antagonist on forced expiratory volume in the first second (FEV1) rounded to the nearest 0.1 liter.
+<br><br>
+Of the following, the BEST statistical test to compare the FEV1 between the 2 groups (new drug vs placebo) at the end of this study is
+</p>
+
+<form id="quiz-form-3">
+  <label>
+    <input type="radio" name="answer-3" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> chi-square test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-3" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> McNemar test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-3" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> paired t test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-3" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> Student t test</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-3"></div>
+::::
+
+---
+
+## Debrief: Student t Test For Two Independent Groups
+
+**Correct Answer: D. Student t test**
+
+:::{.incremental}
+- Outcome is continuous (FEV1).
+- Design is parallel-group, so groups are independent.
+- Student t test compares means between 2 independent groups when assumptions are met.
+:::
+
+---
+
+## Explanatory Figure: Quick Test Selection Matrix
+
+| Outcome Type | Groups | Independent? | Typical Test |
+|---|---|---|---|
+| Continuous, approximately normal | 2 | Yes | Student/unpaired t test |
+| Continuous, approximately normal | 2 | No (paired/before-after) | Paired t test |
+| Categorical | 2+ | Yes | Chi-square (or Fisher exact if sparse) |
+| Categorical paired | 2 | No | McNemar test |
+| Ordinal/ranked | 2 | Yes | Mann-Whitney U |
+
+---
+
+## Question 4 (Original Question #33)
+
+:::: {#quiz-container-4}
+<p class="question">
+The medical director of a large neonatal intensive care service discovers that about half of the medical records she reviewed lacked a graphic growth chart, contrary to unit protocol. Several of her colleagues thought that plotting daily growth parameters on paper became unnecessary since the advent of an electronic records system. Nevertheless, she hypothesized that weight gain might be enhanced with the use of such graphs and proposed studying the question.
+<br><br>
+She designed a retrospective study of consecutive admissions of premature infants who met the following criteria: born after the advent of electronic charting, hospital stay of at least 21 days, no congenital infection or anomaly, and no enterocolitis. She proposed examining the charts of 100 such infants. The presence or absence of a growth chart would be noted as well as the average daily weight gain during the second and third weeks after birth in terms of grams per kilogram of birthweight per day. She believes that weight gain will have an approximately normal distribution.
+<br><br>
+Of the following, the MOST appropriate statistical test to be used to address the hypothesis is
+</p>
+
+<form id="quiz-form-4">
+  <label>
+    <input type="radio" name="answer-4" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> Fisher exact test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-4" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> Mann-Whitney U</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-4" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> paired t test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-4" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> unpaired t test</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-4"></div>
+::::
+
+---
+
+## Debrief: Unpaired t Test
+
+**Correct Answer: D. unpaired t test**
+
+:::{.incremental}
+- Dependent variable is continuous (weight gain) and expected to be approximately normal.
+- Groups are independent (growth chart present vs absent across different infants).
+- Paired t test would require matched pairs or repeated measures on the same participants.
+:::
+
+---
+
+## Debrief: Why Other Tests Do Not Fit
+
+:::{.incremental}
+- **A Fisher exact:** for categorical outcomes with small expected cell counts.
+- **B Mann-Whitney U:** nonparametric alternative when continuous data are not normal.
+- **C Paired t test:** requires dependent/paired observations.
+:::
+
+---
+
+## Question 5 (Original Question #35)
+
+:::: {#quiz-container-5}
+<p class="question">
+A nephrology fellow wants to assess the prevalence of influenza in vaccinated and unvaccinated children 8 to 15 years of age with nephrotic syndrome, chronic kidney disease, and kidney transplant recipients during the upcoming winter season. His hypothesis is that the vaccine will be associated with a lower prevalence of influenza infection in the 3 groups.
+<br><br>
+Of the following, the MOST appropriate statistical test to analyze the results is
+</p>
+
+<form id="quiz-form-5">
+  <label>
+    <input type="radio" name="answer-5" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> chi-square test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-5" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> Fisher exact test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-5" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> Mann-Whitney U test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-5" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> Student t test</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-5"></div>
+::::
+
+---
+
+## Debrief: Chi-square For Categorical Data
+
+**Correct Answer: A. chi-square test**
+
+:::{.incremental}
+- Outcome is categorical (influenza infection: yes/no).
+- Comparison is across independent groups.
+- Chi-square is the standard nonparametric test for association in categorical data.
+- Fisher exact test is preferred when expected cell counts are very small.
+:::
+
+---
+
+## Question 6 (Original Question #42)
+
+:::: {#quiz-container-6}
+<p class="question">
+A researcher is designing a study to look at parent preferences in the treatment of juvenile arthritis. Parents will be asked to fill out a survey with the factors that are involved in their choice of treatment, and factors will be ranked and compared with medical staff responses. The hypothesis is that parent factors in treatment decision-making are different from medical staff factors.
+<br><br>
+Of the following, the BEST statistical test to evaluate this hypothesis is
+</p>
+
+<form id="quiz-form-6">
+  <label>
+    <input type="radio" name="answer-6" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> Kruskal-Wallis test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-6" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> logistic regression analysis</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-6" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> Mann-Whitney U test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-6" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> Student t test</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-6"></div>
+::::
+
+---
+
+## Debrief: Ranked Data -> Mann-Whitney U
+
+**Correct Answer: C. Mann-Whitney U test**
+
+:::{.incremental}
+- Preferences are ranked (ordinal), not continuous interval data.
+- Two independent groups are compared (parents vs medical staff).
+- Mann-Whitney U is the nonparametric 2-group test for ordinal/ranked outcomes.
+- Kruskal-Wallis is the nonparametric analog for 3+ groups.
+:::
+
+---
+
+# Part 3: Clinical Impact vs Statistical Significance {background-color="#43418A"}
+
+---
+
+## Question 7 (Original Question #30)
+
+:::: {#quiz-container-7}
+<p class="question">
+A physician is reviewing a journal article with a group of medical students. The article describes a randomized controlled trial comparing 2 warm-up exercise programs designed to prevent knee injuries in high school soccer athletes. The researchers found that 5% of the athletes who participated in a strengthening warm-up program sustained knee injuries during their soccer season compared to 15% of control group participants who used a static stretching warm-up program. The researchers concluded that for every 10 athletes who participated in the strengthening program, there was 1 fewer injury.
+<br><br>
+Of the following, the CONCEPT expressed in this last conclusion is known as
+</p>
+
+<form id="quiz-form-7">
+  <label>
+    <input type="radio" name="answer-7" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> absolute risk reduction</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-7" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> number needed to treat</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-7" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> odds ratio</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-7" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> relative risk</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-7"></div>
+::::
+
+---
+
+## Debrief: Number Needed to Treat (NNT)
+
+**Correct Answer: B. number needed to treat**
+
+:::{.incremental}
+- ARR = 15% − 5% = 10% = 0.10
+- NNT = 1 / ARR = 1 / 0.10 = 10
+- The statement “1 fewer injury for every 10 athletes” is exactly NNT language.
+- NNT is intuitive, but it does not by itself capture overall clinical context or harms.
+:::
+
+---
+
+## Explanatory Figure: Risk Metrics Relationship
+
+| Metric | Formula | Value In Vignette |
+|---|---|---|
+| Risk in treatment group | Injuries with strengthening warm-up | 5% |
+| Risk in control group | Injuries with static stretching | 15% |
+| Absolute risk reduction (ARR) | 0.15 - 0.05 | 0.10 |
+| Relative risk (RR) | 0.15 / 0.05 | 3 |
+| Number needed to treat (NNT) | 1 / 0.10 | 10 |
+
+---
+
+## Question 8 (Original Question #38)
+
+:::: {#quiz-container-8}
+<p class="question">
+A 6-year-old girl with a deep vein thrombosis is treated with twice-daily injectable anticoagulants, which is the standard of care. Her parents report that every time she receives a dose of the drug, she screams and cries hysterically and will push, punch, and bite her parents as they try to give her the injection. In researching possible alternative treatments, the pediatrician identifies a large, randomized controlled, clinical trial in which the injectable standard-of-care drug was compared with a once-daily oral anticoagulant approved by the US Food and Drug Administration. There was no statistical difference in efficacy between the two therapeutic options. However, the rate of bleeding complications was 0.5% in the oral anticoagulant group vs 0.3% in the standard-of-care injectable drug group (p = .04).
+<br><br>
+Of the following, the MOST accurate statement about the use of the oral anticoagulant for this patient is that it
+</p>
+
+<form id="quiz-form-8">
+  <label>
+    <input type="radio" name="answer-8" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> may still be considered because the increased risk for bleeding complications is not clinically important despite the statistical significance</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-8" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> requires a waiver from the US Food and Drug Administration given the statistically significant increased risk of bleeding complications</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-8" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> should be considered as first-line therapy because there is no statistical difference in the risk of bleeding complications</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-8" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> should never be considered given the statistically significant increased risk of bleeding complications</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-8"></div>
+::::
+
+---
+
+## Debrief: Statistical Significance vs Clinical Significance
+
+**Correct Answer: A. may still be considered because the increased risk for bleeding complications is not clinically important despite the statistical significance**
+
+:::{.incremental}
+- Trial shows similar efficacy between oral and injectable options.
+- Bleeding risk increase is statistically significant (p = .04) but very small in absolute terms (0.5% vs 0.3%).
+- That absolute difference is 0.2%, or about 2 additional events per 1,000 treated.
+- Evidence-based decisions at the bedside must integrate patient burden, quality of life, harms, and benefits.
+:::
+
+---
+
+## Debrief: Why Other Choices Are Incorrect
+
+:::{.incremental}
+- **B:** no FDA waiver implication follows from this statistical finding.
+- **C:** bleeding difference was statistically significant, so “no statistical difference” is incorrect.
+- **D:** “never” overstates risk and ignores individualized clinical tradeoff.
+:::
+
+---
+
+# Part 4: Type II Error and Study Power {background-color="#43418A"}
+
+---
+
+## Question 9 (Original Question #41)
+
+:::: {#quiz-container-9}
+<p class="question">
+A researcher is evaluating a new agent for the treatment of patent ductus arteriosus (PDA) in very-low-birthweight neonates. The researcher has collected data on 100 neonates with PDA. Of 50 neonates treated with a traditional agent, 13 responded, and of the 50 neonates taking the new agent, 18 responded. A Chi-square test is performed for independence and P = .28. The researcher concludes that there is no difference in the response to the two drugs. Several months later, a large multicenter trial is published that demonstrates efficacy of the new drug.
+<br><br>
+Of the following, the MOST likely statistical error the researcher has committed is
+</p>
+
+<form id="quiz-form-9">
+  <label>
+    <input type="radio" name="answer-9" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> inappropriate effect size estimation</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-9" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> inappropriate statistical test</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-9" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> type I error</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-9" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> type II error</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-9"></div>
+::::
+
+---
+
+## Debrief: Type II Error From Inadequate Power
+
+**Correct Answer: D. type II error**
+
+:::{.incremental}
+- Type II error = false negative: failing to reject a false null hypothesis.
+- Here, an early small study concluded no difference, but a later large trial showed efficacy.
+- This pattern strongly suggests insufficient power/sample size in the original study.
+- p > .05 does not prove no effect if power is low.
+:::
+
+---
+
+## Explanatory Figure: Type I vs Type II Errors
+
+| Study Decision | Reality: No True Difference | Reality: True Difference |
+|---|---|---|
+| Reject H0 | Type I error (alpha) | Correct |
+| Fail to reject H0 | Correct | Type II error (beta) |
+
+<p style="text-align: center;"><strong>Power = 1 - beta</strong></p>
+
+---
+
+## Question 10 (Original Question #43)
+
+:::: {#quiz-container-10}
+<p class="question">
+Dr. Bone hypothesizes that a new biologic medication, unobtainimab, will be effective for the treatment of pediatric systemic lupus erythematosus (SLE). Dr. Bone’s research team performs a randomized, double-blind study comparing unobtainimab to placebo in adolescents with SLE. The primary outcome is SLE Disease Activity Index (SLEDAI) scores. Twenty patients who have severe organ involvement and for whom cyclophosphamide treatment has been unsuccessful are recruited. Subjects are randomized into 2 groups: 10 patients receive 8 twice-monthly infusions of unobtainimab and 10 patients receive twice-monthly intravenous normal saline as placebo. Subjects are followed for 3 months after completing the course of unobtainimab or placebo. No significant difference in SLEDAI scores is noted. Dr. Bone’s group publishes the findings, concluding that unobtainimab is no more effective than placebo for adolescents with SLE.
+<br><br>
+One year later, an international collaborative group headed by Dr. Joint publishes a much larger study (N = 893) that examines unobtainimab for the treatment of SLE in adolescents and uses SLEDAI scores as the primary outcome. Patients recently diagnosed with SLE are randomized to receive treatment with either unobtainimab or mycophenolate. This study shows a 28% benefit in overall SLEDAI scores at 6 months in subjects taking unobtainimab compared with the standard treatment group (P = 0.004). This study is published in a highly regarded journal, and the findings are later confirmed in other studies.
+<br><br>
+Of the following, Dr. Bone’s conclusion that unobtainimab is no more effective than placebo is BEST characterized as
+</p>
+
+<form id="quiz-form-10">
+  <label>
+    <input type="radio" name="answer-10" value="A">
+    <span class="answer-text"><span class="answer-letter">A.</span> reporting bias</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-10" value="B">
+    <span class="answer-text"><span class="answer-letter">B.</span> response bias</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-10" value="C">
+    <span class="answer-text"><span class="answer-letter">C.</span> a type I error</span>
+  </label>
+  <label>
+    <input type="radio" name="answer-10" value="D">
+    <span class="answer-text"><span class="answer-letter">D.</span> a type II error</span>
+  </label>
+  <button type="submit">Submit Answer</button>
+</form>
+
+<div id="result-10"></div>
+::::
+
+---
+
+## Debrief: Another Type II Error Pattern
+
+**Correct Answer: D. a type II error**
+
+:::{.incremental}
+- Original small study accepted the null (“no effect”).
+- Larger follow-up study demonstrated benefit (P = 0.004), later replicated.
+- This is classic false-negative interpretation from an underpowered trial.
+- Type I error would be the opposite: claiming an effect when none exists.
+:::
+
+---
+
+## Debrief: Distinguishing Biases From Error Types
+
+:::{.incremental}
+- **Response bias:** participants give answers they think investigators want.
+- **Reporting bias:** selective dissemination/publication of findings.
+- Neither bias label best explains this vignette's sequence as well as type II error.
+:::
+
+---
+
+## Key Takeaways
+
+:::{.incremental}
+- Phrase null hypotheses as no-difference statements.
+- Choose tests by data type, distribution, and independence.
+- Interpret p-values alongside effect size and clinical context.
+- Plan power/sample size early to reduce false negatives.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const explanations = {
+    1: `<p><strong>Correct Answer: B. has the same rate of microbiologic cure proportion as trimethoprim-sulfamethoxazole</strong></p>
+        <p>Null hypothesis statements describe no difference between groups for the primary outcome.</p>
+        <ul>
+          <li>A is an alternative hypothesis statement.</li>
+          <li>C and D improperly use p-value results to define hypotheses.</li>
+        </ul>`,
+    2: `<p><strong>Correct Answer: B. confounding</strong></p>
+        <p>Sibling matching controls shared environmental covariates and reduces confounding.</p>`,
+    3: `<p><strong>Correct Answer: D. Student t test</strong></p>
+        <p>Continuous outcome (FEV1), two independent groups, and parallel-group design support Student/unpaired t testing.</p>`,
+    4: `<p><strong>Correct Answer: D. unpaired t test</strong></p>
+        <p>Weight gain is continuous and compared across independent groups (growth chart present vs absent).</p>`,
+    5: `<p><strong>Correct Answer: A. chi-square test</strong></p>
+        <p>For categorical outcomes across independent groups, chi-square is most appropriate; Fisher exact is used when expected cell counts are very small.</p>`,
+    6: `<p><strong>Correct Answer: C. Mann-Whitney U test</strong></p>
+        <p>Ordinal/ranked data between two independent groups are analyzed with Mann-Whitney U.</p>`,
+    7: `<p><strong>Correct Answer: B. number needed to treat</strong></p>
+        <p>ARR = 10%, so NNT = 1/0.10 = 10; this matches “1 fewer injury for every 10 treated.”</p>`,
+    8: `<p><strong>Correct Answer: A. may still be considered because the increased risk for bleeding complications is not clinically important despite the statistical significance</strong></p>
+        <p>This item distinguishes statistical significance from clinical relevance in individual patient decisions.</p>`,
+    9: `<p><strong>Correct Answer: D. type II error</strong></p>
+        <p>The initial study likely missed a true effect (false negative), later detected by a larger trial.</p>`,
+    10: `<p><strong>Correct Answer: D. a type II error</strong></p>
+         <p>Erroneously concluding no treatment effect when one exists is a type II error.</p>`
+  };
+
+  for (let i = 1; i <= 10; i++) {
+    const modal = document.createElement('div');
+    modal.id = `modal-${i}`;
+    modal.className = 'modal';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'close';
+    closeBtn.innerHTML = '&times;';
+
+    modalContent.innerHTML = explanations[i];
+    modalContent.appendChild(closeBtn);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    closeBtn.onclick = function() { modal.style.display = 'none'; };
+    modal.onclick = function(event) {
+      if (event.target === modal) modal.style.display = 'none';
+    };
+  }
+
+  const correctAnswers = {
+    1: 'B',
+    2: 'B',
+    3: 'D',
+    4: 'D',
+    5: 'A',
+    6: 'C',
+    7: 'B',
+    8: 'A',
+    9: 'D',
+    10: 'D'
+  };
+
+  for (let i = 1; i <= 10; i++) {
+    const form = document.getElementById(`quiz-form-${i}`);
+    if (!form) continue;
+
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      const selected = document.querySelector(`input[name="answer-${i}"]:checked`);
+      const resultDiv = document.getElementById(`result-${i}`);
+      const modal = document.getElementById(`modal-${i}`);
+
+      if (!selected) {
+        resultDiv.innerHTML = '<p style="color: orange;">Please select an answer.</p>';
+        return;
+      }
+
+      if (selected.value === correctAnswers[i]) {
+        resultDiv.innerHTML = '<p style="color: green; font-weight: bold;">Correct.</p>';
+      } else {
+        resultDiv.innerHTML = '<p style="color: red; font-weight: bold;">Not quite.</p>';
+      }
+      modal.style.display = 'block';
+    };
+  }
+});
+</script>
+```
